@@ -1,0 +1,11 @@
+"use client";
+import HeroScene from "./HeroScene";
+const A=()=> <span>→</span>;
+export default function Home(){return <main className="built-site">
+<nav className="real-nav"><b>✣ CONVERGE</b><div>Product　 Solutions　 Resources　 Pricing　 About</div><a href="#start">Get started</a></nav>
+<section className="real-hero"><article><small>11　━━</small><h1>Make work<br/>feel <i>alive.</i></h1><p>Converge brings your people, tools, and conversations together—so work flows, ideas spark, and teams thrive.</p><button>Get started <A/></button>　<a href="#noise">Watch the film ◉</a></article><div className="real-three"><HeroScene/></div></section>
+<section id="noise" className="scene noise-scene"><article><small>02　━━</small><h2>The noise<br/>before momentum.</h2><p>Work lives everywhere. Context gets lost. Momentum stalls.</p></article><div className="floating-work"><b>12 unread</b><b>Campaign brief.pdf</b><b>Meeting · 11:00 AM</b><b>Audio note</b><b>PR #732</b><i/></div></section>
+<section className="scene workspace-scene"><article><small>03　━━</small><h2>Watch your<br/>work <i>converge.</i></h2><p>Every conversation and decision comes into one intelligent space.</p></article><div className="real-workspace"><aside>✣<br/><br/>Home<br/>Inbox<br/><strong># product-launch</strong><br/># design<br/># engineering</aside><main><b># product-launch</b><hr/><p>🟠 Maya　 The updated plan for launch is ready.</p><p>🟡 Liam　 Looks great. I&apos;ll turn this into tasks.</p><footer>Message #product-launch　 +</footer></main><aside><strong>Activity</strong><br/><br/>📎 Moodboard v3<br/><br/>↗ feat: add analytics</aside></div></section>
+<section className="scene"><article><small>04　━━</small><h2>Built for the<br/>way you work.</h2><p>Choose your workspace personality. We&apos;ll set up the right channels and tools.</p></article><div className="feature-row"><div><b>01</b><h3>Startup</h3><p>Move fast. Align and ship.</p></div><div><b>02</b><h3>Student team</h3><p>Create, learn and build together.</p></div><div><b>03</b><h3>Creative studio</h3><p>Make ideas visible, together.</p></div></div></section>
+<section id="start" className="final"><h2>Build the place<br/>your team <i>deserves.</i></h2><button>Get started <A/></button></section>
+</main>}

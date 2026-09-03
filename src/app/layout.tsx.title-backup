@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import './portraits.css';
 import "./animations.css";
 import "./pointer-motion.css";
 
@@ -16,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Converge - Make work feel alive",
+  title: "Converge ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Make work feel alive",
   description: "A living home for conversations, ideas, and team momentum.",
 };
 

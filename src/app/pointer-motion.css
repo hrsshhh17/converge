@@ -1,0 +1,13 @@
+/* Pointer-responsive depth. Values come from ScrollExperience.tsx. */
+.heroArt{transform:translate3d(calc(var(--pointer-x) * -28px),calc(var(--pointer-y) * -20px),0)!important;transition:transform .22s cubic-bezier(.2,.8,.2,1)}
+.heroArt .core{translate:calc(var(--pointer-x) * 22px) calc(var(--pointer-y) * 16px)}
+.heroArt .c1{translate:calc(var(--pointer-x) * -24px) calc(var(--pointer-y) * -18px)}
+.heroArt .c2{translate:calc(var(--pointer-x) * 20px) calc(var(--pointer-y) * 16px)}
+.heroArt .c3{translate:calc(var(--pointer-x) * -17px) calc(var(--pointer-y) * 23px)}
+.fragments{transform:translate3d(calc(var(--pointer-x) * 18px),calc(var(--pointer-y) * 12px),0);transition:transform .35s ease-out}
+.window{transform:perspective(1300px) rotateX(calc(var(--pointer-y) * -4deg)) rotateY(calc(var(--pointer-x) * 5deg)) translate3d(calc(var(--pointer-x) * 10px),calc(var(--pointer-y) * 8px),0)!important;transition:transform .22s ease-out,box-shadow .3s ease}
+.orb{translate:calc(var(--pointer-x) * 20px) calc(var(--pointer-y) * 15px)}
+.prompts{transform:translate3d(calc(var(--pointer-x) * -11px),calc(var(--pointer-y) * -8px),0);transition:transform .25s ease-out}
+.map{transform:translate3d(calc(var(--pointer-x) * 16px),calc(var(--pointer-y) * 12px),0);transition:transform .3s ease-out}
+.roles{transform:translate3d(calc(var(--pointer-x) * -8px),calc(var(--pointer-y) * -6px),0);transition:transform .3s ease-out}
+@media(max-width:700px),(prefers-reduced-motion:reduce){.heroArt,.fragments,.window,.prompts,.map,.roles{transform:none!important}.heroArt .core,.heroArt .c1,.heroArt .c2,.heroArt .c3,.orb{translate:none}}
