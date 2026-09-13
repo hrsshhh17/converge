@@ -8,7 +8,7 @@ type Mode="audio"|"video";
 type Signal={type:"offer"|"answer"|"ice"|"hangup";from:string;to:string;mode?:Mode;payload?:RTCSessionDescriptionInit|RTCIceCandidateInit;callId?:string;eventId?:string;reason?:string};
 type Stored={id:string;sender_id:string;recipient_id:string;signal_type:Signal["type"];mode:Mode|null;signal:unknown;created_at?:string};
 export function attachCallRuntime({workspaceId,chatId,meId,isGroup}:{workspaceId:string;chatId:string;meId:string;isGroup:boolean}){
- if(isGroup)return attachGroupCallRuntime({workspaceId,meId});
+ if(isGroup)return attachGroupCallRuntime({workspaceId,channelId:chatId,meId});
  const client=createClient(),room=client.channel(`call:${workspaceId}:${[meId,chatId].sort().join(":")}`,{config:{private:true}});
  let peer:RTCPeerConnection|null=null,stream:MediaStream|null=null,overlay:HTMLDivElement|null=null,remote:HTMLVideoElement|null=null;
  let mode:Mode="audio",callId="",initiated=false,startedAt=0,answered=false,disposed=false,busy=false;
