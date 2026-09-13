@@ -22,7 +22,8 @@ export default function WorkspaceMembers({ workspaceId, owner, variant = "defaul
   useEffect(() => {
     if (!open) return;
     const task = window.setTimeout(() => void load(), 0);
-    return () => window.clearTimeout(task);
+    const previous=document.body.style.overflow;document.body.style.overflow="hidden";
+    return () => {window.clearTimeout(task);document.body.style.overflow=previous;};
   }, [load, open]);
   const createInvite = async () => {
     setMessage("");

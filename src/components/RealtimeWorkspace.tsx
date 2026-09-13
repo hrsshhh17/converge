@@ -20,7 +20,7 @@ export default function RealtimeWorkspace({ workspaceId, refresh }: { workspaceI
       .on("postgres_changes", { event: "*", schema: "public", table: "channels", filter: `workspace_id=eq.${workspaceId}` }, sync)
       .subscribe();
     const visible=()=>{if(document.visibilityState==="visible")sync()};
-    const fallback=window.setInterval(visible,5000);
+    const fallback=window.setInterval(visible,30000);
     window.addEventListener("focus",sync);document.addEventListener("visibilitychange",visible);
     return () => { window.clearTimeout(refreshTimer);window.clearInterval(fallback);window.removeEventListener("focus",sync);document.removeEventListener("visibilitychange",visible);void supabase.removeChannel(channel); };
   }, [workspaceId, refresh]);

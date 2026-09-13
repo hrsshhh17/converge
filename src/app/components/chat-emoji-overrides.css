@@ -2,3 +2,4 @@
 .chatEmoji button{height:31px;border-radius:6px;font-size:18px}
 .chatEmoji button:hover{background:#ff9b7220}
 @media(max-width:620px){.chatEmoji{left:10px;max-height:220px;grid-template-columns:repeat(7,minmax(26px,1fr))}}
+.chatComposer{z-index:20}.chatEmoji,.chatPlus{z-index:120}@media(max-width:620px){.messageOptionsButton{width:22px;height:22px;opacity:.28}.messageOptionsButton:focus,.messageOptionsButton:has(+ .messageContextMenu){opacity:1}.chatMessage:hover .messageOptionsButton{opacity:.28}.messageContextMenu{z-index:80}}
