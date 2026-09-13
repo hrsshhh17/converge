@@ -1,2 +1,63 @@
-.groupCallOverlay{position:fixed;inset:0;z-index:1600;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 0,#3b2118 0,#0a0706 54%,#050303 100%);color:#fff5ed}.groupCallOverlay>section{width:min(1180px,96vw);height:min(760px,92dvh);display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:20px;padding:26px;border:1px solid #8b54364d;border-radius:30px;background:#120b08cc;box-shadow:0 32px 110px #000c;backdrop-filter:blur(18px);overflow:hidden}.groupCallOverlay header{text-align:left}.groupCallOverlay header p{margin:0 0 7px;color:#ff9870;font-size:10px;font-weight:800;letter-spacing:.18em}.groupCallOverlay h2{margin:0;font-size:clamp(23px,3vw,36px);font-weight:600}.groupCallCount{display:block;margin-top:6px;color:#b99d8b;font-size:12px}.groupCallGrid{min-height:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));grid-auto-rows:minmax(0,1fr);gap:14px;overflow:auto}.groupCallGrid article{position:relative;min-height:220px;overflow:hidden;border:1px solid #ffffff17;border-radius:22px;background:radial-gradient(circle at 50% 38%,#3b2119,#090605 65%);display:grid;place-items:center}.groupCallGrid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.groupCallGrid .isLocal video{transform:scaleX(-1)}.groupCallGrid i{width:86px;height:86px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#9c4e2e,#512618);color:#ffe2d3;font-size:28px;font-style:normal;box-shadow:0 0 0 10px #ffffff08}.groupCallGrid b{position:absolute;left:14px;bottom:13px;padding:7px 10px;border-radius:9px;background:#070403cf;font-size:12px}.groupCallOverlay footer{display:flex;justify-content:center;gap:12px;padding:4px}.groupCallOverlay footer button{min-width:96px;min-height:50px;border:1px solid #ffffff12;border-radius:999px;padding:12px 20px;background:#382219;color:#fff0e7;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.groupCallOverlay footer button:hover{background:#4b2b20}.groupCallOverlay footer button[aria-pressed=true]{background:#f3d7c8;color:#2c170f}.groupCallOverlay footer button[hidden]{display:none}.groupCallOverlay .accept{background:#2d9a61}.groupCallOverlay .reject,.groupCallOverlay .leave{background:#ed5e48}.groupCallOverlay.incoming>section{width:min(460px,94vw);height:auto;min-height:460px}.groupCallOverlay.incoming header{align-self:center;text-align:center}.groupCallOverlay.incoming .groupCallGrid{display:grid;place-items:center;overflow:hidden}.groupCallOverlay.incoming .groupCallGrid:after{content:"Your group is calling";width:132px;height:132px;border-radius:50%;display:grid;place-items:center;background:#6b351f;color:#f8d9c9;font-size:13px;box-shadow:0 0 0 14px #ffffff08}
-@media(max-width:620px){.groupCallOverlay{padding:0}.groupCallOverlay>section{width:100%;height:100dvh;max-height:none;padding:max(20px,env(safe-area-inset-top)) 14px max(16px,env(safe-area-inset-bottom));border:0;border-radius:0;background:#0d0806d9;box-shadow:none}.groupCallOverlay header{text-align:center}.groupCallOverlay h2{font-size:24px}.groupCallGrid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(150px,1fr);align-content:center}.groupCallGrid article{min-height:150px;border-radius:18px}.groupCallGrid i{width:62px;height:62px;font-size:21px}.groupCallOverlay footer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.groupCallOverlay footer button{min-width:0;min-height:52px;padding:10px 6px}.groupCallOverlay.incoming>section{width:100%;height:100dvh;min-height:0}.groupCallOverlay.incoming footer{grid-template-columns:1fr 1fr}.groupCallOverlay.incoming .groupCallGrid:after{width:118px;height:118px}}
+.groupCallOverlay {
+  position: fixed; inset: 0; z-index: 1600; display: grid; place-items: center;
+  padding: 24px; color: #fff5ed;
+  background: radial-gradient(circle at 50% 0, #3b2118 0, #0a0706 54%, #050303 100%);
+}
+.groupCallOverlay > section {
+  width: min(1180px, 96vw); height: min(760px, 92dvh); min-height: 0;
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 20px;
+  padding: 26px; overflow: hidden; border: 1px solid #8b54364d; border-radius: 30px;
+  background: #120b08cc; box-shadow: 0 32px 110px #000c; backdrop-filter: blur(18px);
+}
+.groupCallOverlay header { text-align: left; }
+.groupCallOverlay header p { margin: 0 0 7px; color: #ff9870; font-size: 10px; font-weight: 800; letter-spacing: .18em; }
+.groupCallOverlay h2 { margin: 0; font-size: clamp(23px, 3vw, 36px); font-weight: 600; }
+.groupCallCount { display: block; margin-top: 6px; color: #b99d8b; font-size: 12px; }
+.groupCallGrid {
+  min-width: 0; min-height: 0; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  grid-auto-rows: max-content; align-content: start; gap: 14px;
+  padding: 2px 4px 8px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain;
+}
+.groupCallGrid article {
+  position: relative; width: 100%; min-width: 0; min-height: 0; aspect-ratio: 16 / 9;
+  display: grid; place-items: center; isolation: isolate; overflow: hidden;
+  border: 1px solid #ffffff17; border-radius: 22px;
+  background: radial-gradient(circle at 50% 38%, #3b2119, #090605 65%);
+}
+.groupCallGrid video { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+.groupCallGrid .isLocal video { transform: scaleX(-1); }
+.groupCallGrid i {
+  width: 86px; height: 86px; display: grid; place-items: center; border-radius: 50%;
+  background: linear-gradient(145deg, #9c4e2e, #512118); color: #ffe2d6;
+  box-shadow: 0 0 0 10px #d49b6110; font-size: 28px; font-style: normal;
+}
+.groupCallGrid b { position: absolute; z-index: 2; left: 12px; bottom: 10px; padding: 5px 8px; border-radius: 7px; background: #080504bf; font-size: 11px; }
+.groupCallOverlay footer { display: flex; justify-content: center; gap: 11px; margin-top: 0; }
+.groupCallOverlay footer button { min-width: 92px; min-height: 48px; border: 0; border-radius: 999px; padding: 12px 19px; background: #352018; color: #ffe8dc; font-weight: 800; cursor: pointer; }
+.groupCallOverlay footer button[hidden] { display: none; }
+.groupCallOverlay footer button[aria-pressed="true"] { background: #f5d8b8; color: #24160d; }
+.groupCallOverlay .accept { background: #349c63; }
+.groupCallOverlay .reject, .groupCallOverlay .leave { background: #ed6148; }
+.groupCallOverlay.incoming > section { width: min(460px, 94vw); height: min(620px, 88dvh); }
+.groupCallOverlay.incoming header { text-align: center; }
+.groupCallOverlay.incoming .groupCallGrid { place-items: center; }
+.groupCallOverlay.incoming .groupCallGrid::after { content: "A workspace teammate is calling"; color: #c5a895; font-size: 13px; }
+
+@media (max-width: 620px) {
+  .groupCallOverlay { padding: 0; }
+  .groupCallOverlay > section {
+    width: 100%; height: 100dvh; max-height: none;
+    padding: max(20px, env(safe-area-inset-top)) 14px max(16px, env(safe-area-inset-bottom));
+    border: 0; border-radius: 0; background: #0d0b09; box-shadow: none;
+  }
+  .groupCallOverlay header { text-align: center; }
+  .groupCallOverlay h2 { font-size: 24px; }
+  .groupCallGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: max-content; align-content: start; }
+  .groupCallGrid article { aspect-ratio: 3 / 4; border-radius: 18px; }
+  .groupCallGrid i { width: 62px; height: 62px; font-size: 21px; }
+  .groupCallOverlay footer { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .groupCallOverlay footer button { min-width: 0; min-height: 52px; padding: 10px 6px; }
+  .groupCallOverlay.incoming > section { width: 100%; height: 100dvh; min-height: 0; }
+  .groupCallOverlay.incoming footer { grid-template-columns: 1fr 1fr; }
+}
