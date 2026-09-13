@@ -6,10 +6,14 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE);
     meeting: fs.readFileSync("src/app/components/WorkspaceScreenShare.tsx", "utf8"),
     comments: fs.readFileSync("src/app/components/CommentThread.tsx", "utf8"),
     navigation: fs.readFileSync("src/app/components/WorkspaceEnhancements.tsx", "utf8"),
+    mobileChrome: fs.readFileSync("src/app/components/MobileWorkspaceChrome.tsx", "utf8"),
+    members: fs.readFileSync("src/app/components/WorkspaceMembers.tsx", "utf8"),
   };
   if (!source.meeting.includes("getUserMedia({video:{facingMode:\"user\"},audio:true})")) throw new Error("Mobile meeting fallback missing");
   if (!source.comments.includes("comment_likes\").insert(")) throw new Error("Comment like still uses upsert");
   if (!source.navigation.includes("useSearchParams") || !source.navigation.includes("searchParams.get(\"view\")")) throw new Error("Query navigation sync missing");
+  if (!source.mobileChrome.includes('setMenuOpen(false);window.dispatchEvent(new CustomEvent("converge:open-members"))')) throw new Error("Mobile invite does not close its menu before opening members");
+  if (!source.members.includes('window.addEventListener("converge:open-members"') || !source.members.includes("createPortal(dialog,document.body)")) throw new Error("Members dialog is not mounted outside the mobile menu");
   const browser = await chromium.launch({ headless: true, channel: "chrome" });
   try {
     const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
@@ -24,6 +28,6 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE);
       return { memberScrollable:list.scrollHeight>list.clientHeight, modalFits:section.getBoundingClientRect().height<=innerHeight, emojiAboveDots:Number(getComputedStyle(emoji).zIndex)>Number(getComputedStyle(dots).zIndex), dotsSubtle:Number(getComputedStyle(dots).opacity)<.5 };
     });
     if (Object.values(layout).some(value => !value)) throw new Error(JSON.stringify(layout));
-    console.log(JSON.stringify({ mobileMeetingFallback:true,commentLikeInsert:true,navigationQuerySync:true,...layout },null,2));
+    console.log(JSON.stringify({ mobileMeetingFallback:true,commentLikeInsert:true,navigationQuerySync:true,persistentMemberPortal:true,...layout },null,2));
   } finally { await browser.close(); }
 })().catch(error=>{console.error(error);process.exit(1)});

@@ -136,7 +136,7 @@ export default function MobileWorkspaceChrome({ workspaceId }: { workspaceId: st
       {searchOpen && <div className="mobileWorkspaceSearch"><WorkspaceSearch workspaceId={workspaceId} onPost={(id) => { setSearchOpen(false); router.push(`/workspace/${workspaceId}#post-${id}`); }}/></div>}
       {menuOpen && <aside className="mobileWorkspaceMenu">
         <strong>Workspace menu</strong>
-        {owner && <WorkspaceMembers workspaceId={workspaceId} owner variant="menu"/>}
+        {owner && <button onClick={()=>{setMenuOpen(false);window.dispatchEvent(new CustomEvent("converge:open-members"))}}><Icon name="plus"/>Invite members</button>}
         <button onClick={createPost}><Icon name="plus"/>Create post</button>
         <Link onClick={() => setMenuOpen(false)} href={`/workspace/${workspaceId}/files`}><Icon name="folder"/>Files</Link>
         <Link onClick={() => setMenuOpen(false)} href={`/workspace/${workspaceId}?view=calendar`}><Icon name="calendar"/>Calendar</Link>
@@ -152,6 +152,7 @@ export default function MobileWorkspaceChrome({ workspaceId }: { workspaceId: st
       </section>
     </div>}
     </div>
+    {owner&&<WorkspaceMembers workspaceId={workspaceId} owner externalTrigger/>}
     <nav className="mobileWorkspaceBottom" aria-label="Workspace navigation">
       <Link className={pathname === `/workspace/${workspaceId}` ? "active" : ""} href={`/workspace/${workspaceId}`} aria-label="Home"><Icon name="home"/></Link>
       <Link className={pathname.startsWith(chatRoot) ? "active" : ""} href={chatRoot} aria-label="Messages"><Icon name="message"/></Link>
