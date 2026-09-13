@@ -1,0 +1,36 @@
+.profileShell{grid-template-columns:244px minmax(0,1fr)}
+.profileSidebar{padding:20px 14px;background:#100c0a;border-color:var(--pline);overflow:visible}
+.profileBrand{height:44px;padding:0 10px;gap:11px}
+.profileBrand span{font-size:13px;letter-spacing:.14em}
+.profileWorkspaceSwitcher{position:relative}
+.profileSpacePicker{min-height:56px;margin:18px 0 27px;padding:10px;border-color:#4a3025;background:#18110e;transition:border-color .18s,background .18s}
+.profileSpacePicker:hover,.profileSpacePicker[aria-expanded="true"]{border-color:#81503a;background:#211611}
+.profileSpacePicker>i{overflow:hidden;flex:none}
+.profileSpacePicker>i img{width:100%;height:100%;display:block;object-fit:cover}
+.profileSpacePicker>span{flex:1}
+.profileSidebar nav{margin:0!important;gap:4px}
+.profileSidebar nav>small{padding:0 11px 8px}
+.profileSidebar nav a,.profileSidebar footer>a,.profileSidebar footer>button{min-height:40px;padding:10px 11px;gap:12px;border-radius:9px}
+.profileSidebar nav a svg,.profileSidebar footer>a svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;color:#d0a68f}
+.profileSidebar nav a:hover,.profileSidebar footer>a:hover{background:#321b14;color:#fff}
+.profileSidebar nav a:hover svg,.profileSidebar footer>a:hover svg{color:#ff9a73}
+.profileSidebar footer{padding-top:13px;gap:3px}
+.profileSidebar .profileAccount{min-height:54px;margin-top:7px;padding:9px;border-radius:9px;background:#17110e}
+.profileWorkspaceDrawer{position:absolute;z-index:80;top:calc(100% - 18px);left:0;width:100%;max-height:min(60vh,430px);display:flex;flex-direction:column;overflow:hidden;border:1px solid #62402f;border-radius:14px;background:#211511;box-shadow:0 24px 65px #000d}
+.profileWorkspaceDrawer>header{display:grid;gap:4px;padding:14px;border-bottom:1px solid #ffffff0c}
+.profileWorkspaceDrawer>header small{color:#d87550;font-size:8px;letter-spacing:.14em}
+.profileWorkspaceDrawer>header b{font-size:13px}
+.profileWorkspaceDrawer>div{overflow:auto;padding:6px}
+.profileWorkspaceDrawer>div>a{display:flex;align-items:center;gap:10px;padding:9px;border-radius:9px;color:#e9d5c7;text-decoration:none}
+.profileWorkspaceDrawer>div>a:hover,.profileWorkspaceDrawer>div>a.active{background:#3b2118}
+.profileWorkspaceDrawer i{width:34px;height:34px;display:grid;place-items:center;overflow:hidden;flex:none;border-radius:9px;background:#6c321f;color:#ffc0a0;font-size:10px;font-style:normal}
+.profileWorkspaceDrawer i img{width:100%;height:100%;object-fit:cover}
+.profileWorkspaceDrawer span{display:grid;gap:3px;min-width:0;flex:1}
+.profileWorkspaceDrawer span b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.profileWorkspaceDrawer span small{color:#9c8171;font-size:8px}
+.profileWorkspaceDrawer em{color:#ff8762;font-style:normal}
+.profileWorkspaceDrawer .allSpaces{padding:12px 14px;border-top:1px solid #ffffff0c;color:#f19a73;text-decoration:none;font-size:10px}
+@media(max-width:1100px) and (min-width:721px){.profileShell{grid-template-columns:78px minmax(0,1fr)}.profileSidebar{padding:20px 10px}.profileBrand span,.profileSpacePicker>span,.profileSpacePicker>em,.profileSidebar nav span,.profileSidebar footer span{display:none}.profileBrand,.profileSpacePicker,.profileSidebar nav a,.profileSidebar footer>a{justify-content:center}.profileWorkspaceDrawer{position:fixed;top:78px;left:78px;width:260px}.profileSidebar .profileAccount{justify-content:center}.profileSidebar .profileAccount>span:last-child{display:none}}
+@media(max-width:720px){.profileShell{display:block}.profileSidebar{overflow:visible}.profileWorkspaceSwitcher{display:none}.profileSidebar nav a svg{width:18px;height:18px}.profileSidebar nav a:nth-of-type(n+5){display:none}}
+
+.profileFeedPost,.visitorFeed>article,.workspaceLibrary article{content-visibility:auto;contain-intrinsic-size:360px}

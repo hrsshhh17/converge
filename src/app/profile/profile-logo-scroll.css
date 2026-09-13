@@ -1,0 +1,2 @@
+.profileSidebar{overflow-y:auto;overscroll-behavior:contain}.profileBrand>b{display:none!important}.profileBrand svg{display:block!important;width:30px!important;height:28px!important;fill:none!important;stroke-width:8!important;stroke-linecap:round!important;stroke-linejoin:round!important}.profileBrand path:nth-child(1){stroke:#ff6748}.profileBrand path:nth-child(2){stroke:#f7c67d}.profileBrand path:nth-child(3){stroke:#f28a54}.profileBrand circle{fill:#fff2e5}
+@media(max-width:720px){.profileSidebar{overflow:visible}.profileBrand svg{display:none!important}}

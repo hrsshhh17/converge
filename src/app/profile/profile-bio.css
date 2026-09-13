@@ -1,0 +1,23 @@
+.profileHero .profileBio {
+  max-width: 520px;
+  margin-top: 11px;
+  color: var(--ptext);
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.profileBioCount {
+  display: block;
+  margin-top: 5px;
+  color: var(--pmuted);
+  font-size: 10px;
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .profileHero .profileBio {
+    max-width: 58vw;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,6 @@
+@media (max-width:600px){
+  nav .navButtons{display:flex!important;gap:8px;position:relative;z-index:20}
+  nav .signin{display:inline-flex!important;align-items:center;padding:9px 10px;font-size:11px;white-space:nowrap}
+  nav .navButtons .button{display:inline-flex!important;padding:10px 11px;font-size:11px;white-space:nowrap}
+  nav .navButtons .button svg{width:13px}
+}

@@ -1,0 +1,12 @@
+.profileFeedPost>.profilePostActions{min-height:48px;display:flex;align-items:center;justify-content:flex-start;gap:3px;padding:6px 12px;border-top:1px solid color-mix(in srgb,var(--workspace-line,#543527) 72%,transparent)}
+.profileFeedPost>.profilePostActions>button,.profilePostActions .profileLikeAction>button{width:auto;min-width:36px;min-height:36px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 9px;border:0;border-radius:9px;background:transparent;color:var(--workspace-muted,#b79480);font-size:12px;line-height:1;cursor:pointer}
+.profileFeedPost>.profilePostActions button:hover{background:color-mix(in srgb,var(--workspace-accent,#ff6748) 10%,transparent);color:var(--workspace-text,#fff)}
+.profilePostActions .profileLikeAction{display:flex;align-items:center;gap:0}
+.profilePostActions .profileLikeAction>button:first-child{padding-right:4px}
+.profilePostActions .profileLikeAction>.profileActionCount{min-width:25px;padding-left:2px;padding-right:7px;font-variant-numeric:tabular-nums}
+.profileFeedPost>.profilePostActions>button:nth-last-child(2){margin-left:2px}
+.profileFeedPost>.profilePostActions>button:last-child{margin-left:auto}
+.profileFeedPost>.profilePostActions svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.profileFeedPost>.profilePostActions .liked,.profileFeedPost>.profilePostActions .saved{color:var(--workspace-accent,#ff6748)}
+.profileFeedPost>.profilePostActions .liked svg,.profileFeedPost>.profilePostActions .saved svg{fill:currentColor}
+@media(max-width:620px){.profileFeedPost>.profilePostActions{padding-inline:9px}.profileFeedPost>.profilePostActions>button,.profilePostActions .profileLikeAction>button{padding:7px}}

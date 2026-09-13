@@ -1,0 +1,16 @@
+"use client";
+import Link from "next/link";
+import {useEffect,useRef,useState} from "react";
+import {createClient} from "../../lib/supabase/client";
+type Result={id:string;label:string;kind:"Post"|"Person"|"File";url?:string};
+export default function WorkspaceSearch({workspaceId,onPost}:{workspaceId:string;onPost:(id:string)=>void}){
+ const [query,setQuery]=useState(""),[open,setOpen]=useState(false),[results,setResults]=useState<Result[]>([]),[status,setStatus]=useState("");const ref=useRef<HTMLDivElement>(null);
+ const updateQuery=(value:string)=>{setQuery(value);setResults([]);setStatus(value.trim()?"Searching…":"");setOpen(true)};
+ useEffect(()=>{const close=(e:PointerEvent)=>{if(!ref.current?.contains(e.target as Node))setOpen(false)};document.addEventListener("pointerdown",close);return()=>document.removeEventListener("pointerdown",close)},[]);
+ useEffect(()=>{let active=true;const term=query.trim();if(!term)return;const timer=setTimeout(async()=>{try{const client=createClient(),pattern=`%${term.replace(/[\\%_]/g,"\\$&")}%`;const [posts,people,files]=await Promise.all([
+ client.from("posts").select("id,body").eq("workspace_id",workspaceId).is("archived_at",null).ilike("body",pattern).order("created_at",{ascending:false}).limit(8),
+ client.from("workspace_profiles").select("id,full_name").eq("workspace_id",workspaceId).ilike("full_name",pattern).limit(8),
+ client.from("posts").select("id,attachment_name,attachment_url").eq("workspace_id",workspaceId).is("archived_at",null).ilike("attachment_name",pattern).limit(8)]);
+ if(!active)return;if(posts.error||people.error||files.error){setStatus("Search could not load. Please try again.");return}const rows:Result[]=[...(people.data||[]).map(p=>({id:p.id,label:p.full_name||"Member",kind:"Person" as const})),...(posts.data||[]).map(p=>({id:p.id,label:p.body||"Post",kind:"Post" as const})),...(files.data||[]).map(p=>({id:p.id,label:p.attachment_name||"File",kind:"File" as const,url:p.attachment_url}))];setResults(rows);setStatus(rows.length?"":"No results in this workspace.");}catch{if(active)setStatus("Search could not load. Please try again.")}},250);return()=>{active=false;clearTimeout(timer)}},[query,workspaceId]);
+ return <div className="workspaceSearch" role="search" ref={ref} onKeyDown={e=>{if(e.key==="Escape")setOpen(false)}}><label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg><input type="search" data-no-emoji aria-label="Search posts, people and files" placeholder="Search posts, people and files" value={query} onFocus={()=>setOpen(true)} onChange={e=>updateQuery(e.target.value)}/>{query&&<button type="button" aria-label="Clear search" onClick={()=>updateQuery("")}>×</button>}</label>{open&&query.trim()&&<div className="workspaceSearchResults" aria-label="Search results"><p role="status">{status||`${results.length} results in this workspace`}</p>{results.map(r=>r.kind==="Person"?<Link key={r.kind+r.id} href={`/profile/${r.id}?workspace=${workspaceId}`} onClick={()=>setOpen(false)}><small>{r.kind}</small><span>{r.label}</span></Link>:<button key={r.kind+r.id} onClick={()=>{setOpen(false);onPost(r.id)}}><small>{r.kind}</small><span>{r.label}</span></button>)}</div>}</div>;
+}

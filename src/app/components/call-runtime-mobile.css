@@ -1,0 +1,16 @@
+@media(max-width:620px){
+ .callOverlay{padding:0;background:radial-gradient(circle at 50% 18%,#5d3425 0,#160d0a 48%,#070504 100%)}
+ .callOverlay>section{width:100%;height:100dvh;min-height:0!important;max-height:none;display:grid!important;grid-template-rows:auto minmax(0,1fr) auto auto;align-items:center;padding:max(22px,env(safe-area-inset-top)) 18px max(18px,env(safe-area-inset-bottom));border:0;border-radius:0;background:transparent;box-shadow:none}
+ .callBrand{align-self:start;padding-top:4px}
+ .callPerson{align-self:stretch;display:grid;place-content:center;padding:24px 0!important}
+ .callAvatar{width:112px!important;height:112px!important;margin-bottom:22px}
+ .callOverlay h2{font-size:26px}
+ .callControls{align-self:end;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:9px;margin-top:14px!important}
+ .callControls button{min-width:0;min-height:52px;padding:11px 8px;border-radius:16px;font-size:12px}
+ .callControls .callAccept,.callControls .callHangup{grid-column:auto}
+ .callHint{margin-top:14px}
+ .videoCall .callPerson{display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 0!important}
+ .videoCall .callAvatar{margin:0}
+ .callVideoStage .remote{height:min(48dvh,420px);border-radius:20px}
+ .callVideoStage .local{width:78px;height:104px}
+}

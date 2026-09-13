@@ -1,0 +1,9 @@
+/* Replaces the decorative rail with a clearer product navigation hierarchy. */
+.sideNav{padding:20px 12px;background:linear-gradient(180deg,#15100d 0%,#100d0b 100%)}
+.brand{height:48px;display:flex;align-items:center;border-bottom:1px solid #3f291e;padding:0 12px!important}
+.sideNav nav{margin-top:25px;gap:3px}
+.sideNav nav:before{content:"WORKSPACE";padding:0 11px 9px;color:#7f6352;font-size:9px;font-weight:700;letter-spacing:.14em}
+.sideNav button,.sideBottom a{min-height:40px;font-weight:600}
+.sideNav .selected{box-shadow:inset 3px 0 0 #ff6748;background:linear-gradient(90deg,#4b2117,#251512)}
+.sideBottom{padding-top:14px}.sideBottom:before{content:"ACCOUNT";padding:0 11px 8px;color:#7f6352;font-size:9px;font-weight:700;letter-spacing:.14em}
+@media(max-width:1050px){.sideNav nav:before,.sideBottom:before{display:none}.brand{border-bottom:0}.sideNav{padding:20px 10px}}

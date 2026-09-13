@@ -1,0 +1,48 @@
+.commentDialog{position:fixed;inset:0;z-index:1600;display:grid;place-items:center;padding:18px;background:#030509c7;backdrop-filter:blur(9px);overscroll-behavior:contain}
+.commentDialog>section{position:relative;width:min(100%,540px);max-height:min(82dvh,720px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;border:1px solid color-mix(in srgb,var(--workspace-accent,#ff6748) 30%,#26354c);border-radius:20px;background:var(--workspace-panel,#0d1525);color:var(--workspace-text,#f6f8ff);box-shadow:0 30px 100px #000c}
+.commentDialog>section>header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid color-mix(in srgb,var(--workspace-text,#fff) 10%,transparent)}
+.commentDialog>section>header p{margin:0;font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--workspace-accent,#ff8062)}
+.commentDialog>section>header>button{width:34px;height:34px;border:0;border-radius:50%;background:color-mix(in srgb,var(--workspace-text,#fff) 8%,transparent);color:inherit;font-size:22px;line-height:1;cursor:pointer}
+.commentList{min-height:180px;max-height:none;display:block;overflow-y:auto;padding:8px 20px;margin:0;overscroll-behavior:contain}
+.threadComment{position:relative;display:flex;gap:11px;padding:13px 0;border-bottom:1px solid color-mix(in srgb,var(--workspace-text,#fff) 7%,transparent)}
+.threadComment:last-child{border-bottom:0}
+.threadAvatar{width:38px;height:38px;flex:none;display:grid;place-items:center;overflow:hidden;border-radius:50%;background:linear-gradient(135deg,#f18e62,#743623);color:#fff;font-size:13px;font-weight:800}
+.threadAvatar img{width:100%;height:100%;display:block;object-fit:cover}
+.threadBody{position:relative;min-width:0;flex:1;padding-right:64px}
+.threadMeta{display:flex;align-items:center;gap:7px;min-height:18px}
+.threadMeta a{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:inherit;text-decoration:none;font-size:13px;font-weight:750}
+.threadMeta time,.threadMeta span{color:var(--workspace-muted,#93a0b4);font-size:10px}
+.threadBody>p{margin:4px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;color:color-mix(in srgb,var(--workspace-text,#fff) 88%,transparent);font-size:13px;line-height:1.45}
+.threadActions{display:flex;align-items:center;gap:8px;margin-top:8px;min-height:28px}
+.threadActions button{min-height:28px;border:0;background:transparent;color:var(--workspace-muted,#9eabba);padding:4px 6px;font-size:12px;font-weight:650;cursor:pointer}
+.commentReaction{position:absolute;right:29px;top:25px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:0}
+.commentReaction button{border:0;background:transparent;color:var(--workspace-muted,#9eabba);cursor:pointer}
+.commentReaction .commentLikeButton{width:28px;height:26px;padding:0;font-size:20px;line-height:1}.commentReaction .commentLikeButton.liked{color:#ff5f69}.commentReaction .commentLikeButton:disabled{opacity:.6}
+.commentReaction .likeCount{min-width:18px;height:15px;margin-top:-2px;padding:0 3px;border-radius:7px;background:transparent;font-size:11px;line-height:1}
+.threadActions .replyButton,.threadActions .replyToggle{font-size:12px}
+.threadMenu{position:absolute;right:0;top:25px}
+.threadMenu>button{width:26px;height:26px;padding:0!important;border-radius:50%!important;font-size:18px!important}
+.threadMenu aside{position:absolute;z-index:5;right:0;top:28px;width:120px;padding:5px;border:1px solid #3d4b62;border-radius:10px;background:var(--workspace-panel,#121b2d);box-shadow:0 15px 35px #0009}
+.threadMenu aside button{display:block;width:100%;padding:8px;text-align:left;border-radius:7px;font-size:11px}
+.threadMenu aside button:hover{background:color-mix(in srgb,var(--workspace-accent,#ff6748) 15%,transparent)}
+.inlineEdit{display:flex;gap:7px;margin-top:6px}
+.inlineEdit input{min-width:0;flex:1;padding:8px 10px;border:1px solid #41506a;border-radius:8px;background:#080f1d;color:inherit}
+.inlineEdit button{border:0;border-radius:8px;background:var(--workspace-accent,#ff6748);color:#fff;padding:0 12px}
+.commentDialog>section>form{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;gap:8px;padding:12px 18px;border-top:1px solid color-mix(in srgb,var(--workspace-text,#fff) 10%,transparent);background:color-mix(in srgb,var(--workspace-panel,#0d1525) 94%,#000)}
+.commentDialog>section>form textarea{width:100%;height:46px;min-height:46px;max-height:120px;resize:vertical;overflow-y:auto;padding:11px 14px;border:1px solid #35445d;border-radius:14px;outline:0;background:#080f1d;color:inherit;font:inherit;font-size:14px;line-height:1.4}
+.commentDialog>section>form textarea:focus{border-color:var(--workspace-accent,#ff6748)}
+.commentDialog>section>form>button{width:46px;height:46px;border:0;border-radius:12px;background:var(--workspace-accent,#ff6748);color:#fff;cursor:pointer}
+.commentDialog>section>form>.emojiButton{display:grid;place-items:center;overflow:hidden;padding:0;background:transparent;border:1px solid #35445d;color:var(--workspace-muted,#a7b2c3);font-size:19px;line-height:1}
+.replying{position:absolute;left:68px;bottom:60px;padding:5px 8px;border-radius:7px;background:#253148;color:#cfd8e7;font-size:9px}
+.replying button{border:0;background:transparent;color:inherit}
+.emojiPicker{position:absolute;z-index:8;left:18px;bottom:68px;width:min(360px,calc(100% - 36px));max-height:210px;display:grid;grid-template-columns:repeat(8,1fr);gap:3px;overflow:auto;padding:9px;border:1px solid #40506a;border-radius:13px;background:#10192a;box-shadow:0 18px 55px #000b}
+.emojiPicker button{border:0;background:transparent;padding:5px;font-size:18px;cursor:pointer}
+.likesPopover,.confirmCommentDelete{position:absolute;z-index:9;left:50%;top:50%;width:min(280px,calc(100% - 40px));transform:translate(-50%,-50%);display:grid;gap:8px;padding:16px;border:1px solid #455570;border-radius:14px;background:#111b2d;box-shadow:0 20px 65px #000c}
+.likesPopover span{font-size:12px;color:#d8e0eb}
+.confirmCommentDelete p{margin:0;font-weight:700}
+.confirmCommentDelete>div{display:flex;justify-content:flex-end;gap:8px}
+.confirmCommentDelete button{padding:8px 11px;border:1px solid #48566c;border-radius:8px;background:transparent;color:#fff}
+.confirmCommentDelete button:last-child{border-color:#e85e59;background:#e85e59}
+.commentActionError{margin:0 18px 8px;color:#ff8d85;font-size:11px}
+.threadComment.notificationTarget{border-radius:10px;background:color-mix(in srgb,var(--workspace-accent,#ff6748) 10%,transparent)}
+@media(max-width:600px){.commentDialog{padding:0;align-items:end}.commentDialog>section{width:100%;max-height:90dvh;border-radius:20px 20px 0 0}.commentList{padding:7px 14px}.commentDialog>section>form{padding:12px}.emojiPicker{left:12px;width:calc(100% - 24px)}}

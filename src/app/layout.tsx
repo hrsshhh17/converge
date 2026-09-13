@@ -4,6 +4,9 @@ import "./globals.css";
 import './portraits.css';
 import "./animations.css";
 import "./pointer-motion.css";
+import "./mobile-auth-fix.css";
+import "./responsive-ui.css";
+import GlobalEmojiPicker from "./components/GlobalEmojiPicker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">{children}<GlobalEmojiPicker /></body>
     </html>
   );
 }

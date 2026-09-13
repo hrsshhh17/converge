@@ -1,0 +1,2 @@
+/* CommentThread owns the shared comment modal UI. Keep route-specific rules out
+   of this file so home, profiles and posts shared in chat render identically. */

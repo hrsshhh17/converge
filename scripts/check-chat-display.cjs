@@ -1,0 +1,20 @@
+const fs=require('node:fs'),ts=require('typescript'),Module=require('node:module'),assert=require('node:assert/strict');
+const compiled=ts.transpileModule(fs.readFileSync('src/lib/chat-display.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText;
+const mod=new Module('chat-display');mod._compile(compiled,'chat-display.cjs');
+const {chatDateLabel,chatDateTime,appearanceStorageKey,messageLinkParts}=mod.exports;
+const now=new Date(2026,8,9,12,0,0);
+assert.equal(chatDateLabel(new Date(2026,8,9,8).toISOString(),now,'en-US'),'Today');
+assert.equal(chatDateLabel(new Date(2026,8,8,23).toISOString(),now,'en-US'),'Yesterday');
+assert.equal(chatDateLabel(new Date(2026,8,7,8).toISOString(),now,'en-US'),'Monday');
+assert.equal(chatDateLabel(new Date(2026,8,2,8).toISOString(),now,'en-US'),'Sep 2, 2026');
+assert.match(chatDateTime(new Date(2026,8,9,8,3,59).toISOString(),now,'en-US'),/^Today · 08:03 AM$/);
+// Midnight and daylight-saving date boundaries use calendar dates.
+assert.equal(chatDateLabel(new Date(2026,2,8,23).toISOString(),new Date(2026,2,9,1),'en-US'),'Yesterday');
+assert.notEqual(appearanceStorageKey('w','u','a','theme'),appearanceStorageKey('w','u','b','theme'));
+assert.notEqual(appearanceStorageKey('w','u','a','theme'),appearanceStorageKey('w','v','a','theme'));
+const text='Read https://example.com/a?q=1&b=2. Or (www.example.org/guide).';
+const parts=messageLinkParts(text);assert.equal(parts.map(p=>p.text).join(''),text);
+assert.deepEqual(parts.filter(p=>p.href).map(p=>p.href),['https://example.com/a?q=1&b=2','https://www.example.org/guide']);
+assert.equal(messageLinkParts('javascript:alert(1) data:text/html,test').filter(p=>p.href).length,0);
+assert.equal(messageLinkParts('https://example.com/wiki/Test_(topic)').find(p=>p.href).href,'https://example.com/wiki/Test_(topic)');
+console.log('Chat-scoped keys, relative dates, minute-only times and safe link parsing: PASS');

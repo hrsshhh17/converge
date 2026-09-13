@@ -1,0 +1,2 @@
+import ChatClient from "../../../../components/ChatClient";
+export default async function ChatPage({params,searchParams}:{params:Promise<{workspaceId:string;chatId:string}>;searchParams:Promise<{channel?:string}>}){const {workspaceId,chatId}=await params;const {channel}=await searchParams;return <ChatClient key={`${chatId}:${channel||""}`} workspaceId={workspaceId} chatId={chatId} requestedChannelId={channel}/>;}

@@ -1,0 +1,52 @@
+.shareDialog {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1800 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 18px !important;
+  overflow: auto;
+  background: #050403c9 !important;
+  backdrop-filter: blur(10px);
+}
+
+.shareDialog > section {
+  width: min(530px, 100%);
+  max-height: min(86dvh, 760px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid #65402f;
+  border-radius: 20px;
+  background: #1b120f;
+  color: #fff1e6;
+  box-shadow: 0 30px 90px #000d;
+}
+
+.shareDialog > section > header { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.shareDialog > section > header p { margin: 0; color: #ff8b68; font-size: 10px; font-weight: 800; letter-spacing: .15em; }
+.shareDialog > section > header h2 { margin: 4px 0 0; font-size: 22px; }
+.shareDialog > section > header > button { width: 36px; height: 36px; border: 0; border-radius: 50%; background: #ffffff0d; color: #fff; font-size: 23px; cursor: pointer; }
+.shareLink { display: flex; gap: 8px; margin: 14px 0 8px; }
+.shareLink input { min-width: 0; flex: 1; padding: 11px; border: 1px solid #62402f; border-radius: 8px; background: #0e0b09; color: #efcdb8; font-size: 12px; }
+.shareLink button { width: 42px; border: 0; border-radius: 8px; background: #ff6748; color: #fff; font-size: 19px; cursor: pointer; }
+.shareHelp { margin: 0; color: #ad9383; font-size: 11px; }
+.shareRecipients { min-height: 0; overflow-y: auto; scrollbar-width: none; }
+.shareRecipients::-webkit-scrollbar { display: none; }
+.shareSection { display: grid; gap: 8px; margin-top: 20px; }
+.shareSection > b { font-size: 10px; letter-spacing: .12em; color: #c5896c; }
+.shareRecipient { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #ffffff12; }
+.shareRecipient img, .shareRecipient > i { width: 38px; height: 38px; flex: none; border-radius: 50%; object-fit: cover; }
+.shareRecipient > i { display: grid; place-items: center; background: #5c2f20; color: #ffe0ca; font-style: normal; }
+.shareRecipient span { display: grid; gap: 2px; min-width: 0; flex: 1; }
+.shareRecipient strong { font-size: 13px; }
+.shareRecipient small, .shareEmpty { font-size: 11px; color: #ad9383; }
+.shareRecipient button { border: 1px solid #a85136; border-radius: 999px; background: #32160f; color: #ffb497; padding: 7px 13px; font-size: 11px; cursor: pointer; }
+.shareRecipient button:disabled, .shareLink button:disabled { opacity: .6; cursor: wait; }
+.shareNotice { margin: 14px 0 0; padding: 10px; border-radius: 7px; background: #432219; color: #ffbfaa; font-size: 12px; line-height: 1.4; }
+
+@media (max-width: 600px) {
+  .shareDialog { padding: 0 !important; align-items: end !important; }
+  .shareDialog > section { width: 100%; max-height: 92dvh; border-radius: 20px 20px 0 0; padding: 18px; }
+}

@@ -1,0 +1,304 @@
+.groupUiIcon {
+  width: 21px;
+  height: 21px;
+  flex: none;
+}
+
+.groupAvatarButton .groupUiIcon {
+  width: 44px;
+  height: 44px;
+}
+
+.groupNameRow > button .groupUiIcon,
+.groupAbout > div:first-child > button .groupUiIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.groupInfoBackdrop .groupHero > .groupNameRow {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 13px 0 5px;
+}
+
+.groupInfoBackdrop .groupHero > .groupNameRow > button {
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #ffad88;
+}
+
+.groupInfoBackdrop .groupHero > .groupNameRow > button:hover,
+.groupInfoBackdrop .groupHero > .groupNameRow > button:focus-visible {
+  background: #3a241c;
+  outline: none;
+}
+
+.groupHero > div:last-child {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.groupHero > div:last-child button,
+.groupInfoBackdrop .groupHero > div:last-child button {
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  width: 66px;
+  height: 62px;
+  border: 1px solid #513529;
+  border-radius: 15px;
+  background: #261812;
+  color: #fbe9df;
+  font-size: inherit;
+}
+
+.groupHero > div:last-child button:hover,
+.groupHero > div:last-child button:focus-visible {
+  border-color: #9b624a;
+  background: #392219;
+  outline: none;
+}
+
+.groupActions .groupUiIcon {
+  color: #efa080;
+}
+
+.groupDanger {
+  display: grid;
+  gap: 3px;
+}
+
+.groupInfoBackdrop .groupDanger button,
+.groupDanger button,
+.groupDanger button:nth-child(2) {
+  min-height: 42px;
+  padding: 9px 10px;
+  border-radius: 9px;
+  background: transparent;
+  color: #ff9a80;
+  font-size: 14px;
+}
+
+.groupDanger button:hover,
+.groupDanger button:focus-visible,
+.groupDanger button:nth-child(2):hover,
+.groupDanger button:nth-child(2):focus-visible {
+  background: #4a2119;
+  color: #ffc1ad;
+  outline: none;
+}
+
+.groupDanger .groupStatus {
+  margin: 7px 9px 2px;
+}
+
+.groupReportForm {
+  display: grid;
+  gap: 10px;
+}
+
+.groupReportForm > div:first-child {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #57332a;
+  border-radius: 12px;
+  background: #271611;
+  color: #ffab91;
+}
+
+.groupReportForm > div:first-child span {
+  display: grid;
+  gap: 5px;
+}
+
+.groupReportForm small {
+  color: #aa8b7b;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.groupReportForm > label {
+  margin-top: 5px;
+  color: #d8b8a5;
+  font-size: 12px;
+}
+
+.groupReportForm textarea {
+  min-height: 140px;
+  resize: vertical;
+  border: 1px solid #674333;
+  border-radius: 11px;
+  background: #0f0a08;
+  color: #fff0e7;
+  padding: 12px;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.groupReportForm > small {
+  justify-self: end;
+}
+
+.groupReportActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.groupReportActions button {
+  border: 1px solid #674333;
+  border-radius: 9px;
+  background: transparent;
+  color: #f2d6c7;
+  padding: 10px 13px;
+}
+
+.groupReportActions .groupPrimary {
+  border: 0;
+  background: #ff7656;
+  color: #1c0d08;
+}
+
+.groupReportActions .groupPrimary:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.groupConfirm {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 28px 12px;
+  text-align: center;
+}
+
+.groupConfirm > .groupUiIcon {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #4a2119;
+  color: #ff9a80;
+}
+
+.groupConfirm h3,
+.groupConfirm p {
+  margin: 0;
+}
+
+.groupConfirm p {
+  max-width: 330px;
+  color: #b99a89;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.groupConfirm > div {
+  display: flex;
+  gap: 9px;
+  margin-top: 10px;
+}
+
+.groupConfirm > div button {
+  border: 1px solid #674333;
+  border-radius: 9px;
+  background: transparent;
+  color: #f2d6c7;
+  padding: 10px 14px;
+}
+
+.groupConfirm > div .dangerAction {
+  border-color: #8d3d2f;
+  background: #64291f;
+  color: #ffd2c5;
+}
+
+.groupMemberPicker {
+  display: grid;
+  gap: 8px;
+  max-height: min(56dvh, 520px);
+  margin: 14px 0;
+  overflow: auto;
+}
+
+.groupMemberPicker > button {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #54362b;
+  border-radius: 12px;
+  background: #1b120f;
+  color: #f6ded2;
+  text-align: left;
+  cursor: pointer;
+}
+
+.groupMemberPicker > button.selected {
+  border-color: #ee815c;
+  background: #3a2018;
+}
+
+.groupMemberPicker img,
+.groupMemberPicker i {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #743b28;
+  color: #ffe5d7;
+  font-style: normal;
+}
+
+.groupMemberPicker span {
+  display: grid;
+  flex: 1;
+  gap: 3px;
+}
+
+.groupMemberPicker small {
+  color: #b89888;
+}
+
+.groupMemberPicker em {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #342018;
+  color: #ff9b76;
+  font-style: normal;
+}
+
+.groupSubpanel > .groupPrimary {
+  width: 100%;
+}
+
+.groupSubpanel > .groupPrimary:disabled {
+  cursor: not-allowed;
+  opacity: .48;
+}
+
+@media (max-width: 620px) {
+  .groupInfoBackdrop .groupHero {
+    padding: 20px 14px !important;
+  }
+
+  .groupInfoBackdrop :is(.groupActions, .groupAbout, .groupMembers, .groupDanger) {
+    padding: 13px !important;
+  }
+}

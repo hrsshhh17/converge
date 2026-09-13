@@ -1,0 +1,4 @@
+.chatEmoji{width:min(340px,calc(100vw - 28px));max-height:240px;grid-template-columns:repeat(8,minmax(28px,1fr));overflow:auto}
+.chatEmoji button{height:31px;border-radius:6px;font-size:18px}
+.chatEmoji button:hover{background:#ff9b7220}
+@media(max-width:620px){.chatEmoji{left:10px;max-height:220px;grid-template-columns:repeat(7,minmax(26px,1fr))}}

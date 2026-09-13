@@ -1,0 +1,298 @@
+.groupHero button:disabled {
+  cursor: not-allowed;
+  opacity: .38;
+}
+
+.permissionIntro {
+  margin: 8px 0 0;
+  color: #c6a793;
+  font-size: 14px;
+}
+
+.permissionList {
+  display: grid;
+  gap: 2px;
+}
+
+.permissionList button,
+.editAdmins {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 13px 4px;
+  border: 0;
+  border-bottom: 1px solid #38241c;
+  background: transparent;
+  color: #f8dfd2;
+  text-align: left;
+  cursor: pointer;
+}
+
+.permissionList button:disabled {
+  cursor: default;
+  opacity: .75;
+}
+
+.permissionList span,
+.editAdmins span {
+  display: grid;
+  gap: 4px;
+}
+
+.permissionList small,
+.editAdmins small {
+  color: #a98b7b;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.permissionList i {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 23px;
+  border-radius: 99px;
+  background: #53413a;
+  color: #b3a29a;
+  font-style: normal;
+}
+
+.permissionList i.on {
+  justify-content: end;
+  padding-right: 5px;
+  background: #2ca76b;
+  color: white;
+}
+
+.editAdmins {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+.adminList {
+  display: grid;
+  gap: 8px;
+}
+
+.adminList article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #38241c;
+}
+
+.adminList img,
+.adminList article > i {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  background: #78402a;
+  object-fit: cover;
+  font-style: normal;
+}
+
+.adminList span {
+  display: grid;
+  flex: 1;
+  gap: 3px;
+}
+
+.adminList small {
+  color: #a98b7b;
+  font-size: 10px;
+}
+
+.adminList button {
+  border: 1px solid #6f4939;
+  border-radius: 8px;
+  background: #2b1913;
+  color: #ffb08e;
+  padding: 7px 9px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.groupMembers a > em {
+  margin-left: auto;
+  border-radius: 5px;
+  background: #245b3b;
+  color: #a9f0c6;
+  padding: 4px 7px;
+  font-size: 9px;
+  font-style: normal;
+}
+
+.groupAvatarButton {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid #75432f;
+  border-radius: 50%;
+  background: #703521;
+  color: #ffd6c1;
+  cursor: pointer;
+}
+
+.groupAvatarButton img,
+.largeGroupPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.groupAvatarButton i,
+.largeGroupPhoto i {
+  font-size: 40px;
+  font-style: normal;
+}
+
+.groupNameRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 13px 0 5px;
+}
+
+.groupNameRow h2 {
+  margin: 0;
+}
+
+.groupNameRow > button {
+  border: 0;
+  background: transparent;
+  color: #ffad88;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.groupNameRow input {
+  min-width: 0;
+  width: min(250px, 70vw);
+  border: 1px solid #704733;
+  border-radius: 8px;
+  background: #100b09;
+  color: #fff1e5;
+  padding: 9px 10px;
+  text-align: center;
+}
+
+.groupPhotoModal {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: #000c;
+}
+
+.groupPhotoModal > section {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  width: min(390px, 100%);
+  padding: 24px;
+  border: 1px solid #75432f;
+  border-radius: 16px;
+  background: #21130e;
+  box-shadow: 0 24px 80px #000;
+}
+
+.closeGroupPhoto {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.largeGroupPhoto {
+  display: grid;
+  place-items: center;
+  width: min(270px, 70vw);
+  aspect-ratio: 1;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #703521;
+}
+
+.groupPhotoModal label,
+.deleteGroupPhoto {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 14px;
+  background: #ff7656;
+  color: #1c0d08;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.groupAbout > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.groupAbout > div:first-child > button {
+  border: 0;
+  background: transparent;
+  color: #ffad88;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.descriptionEditor {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.descriptionEditor textarea {
+  grid-column: 1 / -1;
+  min-height: 90px;
+  resize: vertical;
+  border: 1px solid #704733;
+  border-radius: 8px;
+  background: #100b09;
+  color: #fff1e5;
+  padding: 10px;
+  font: inherit;
+}
+
+.descriptionEditor button {
+  border: 1px solid #704733;
+  border-radius: 8px;
+  background: #2b1913;
+  color: #ffb08e;
+  padding: 8px 11px;
+  cursor: pointer;
+}
+
+.groupPhotoModal label input {
+  display: none;
+}
+
+.deleteGroupPhoto {
+  background: transparent;
+  color: #ff8e78;
+  font-weight: 500;
+}
