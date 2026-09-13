@@ -2,6 +2,7 @@
 import {createClient} from "../../lib/supabase/client";
 import {attachGroupCallRuntime} from "./group-call";
 import {callDuration,startRingtone} from "./ringtone";
+import {attachRemoteTrack,getIceServers} from "./webrtc-config";
 import "./call-runtime.css";
 
 type Mode="audio"|"video";
@@ -55,14 +56,14 @@ export function attachCallRuntime({workspaceId,chatId,meId,isGroup}:{workspaceId
  const prepare=async(id:string)=>{
   const media=await navigator.mediaDevices.getUserMedia({audio:true,video:mode==="video"});
   if(disposed||id!==callId){media.getTracks().forEach(t=>t.stop());throw Error("Call was closed")}
-  stream=media;const pc=new RTCPeerConnection({iceServers:[{urls:"stun:stun.l.google.com:19302"}]});peer=pc;
+  stream=media;const pc=new RTCPeerConnection({iceServers:getIceServers()});peer=pc;const remoteStream=new MediaStream();
   media.getTracks().forEach(t=>pc.addTrack(t,media));const local=overlay?.querySelector<HTMLVideoElement>(".local");if(local){local.muted=true;local.srcObject=media}
-  pc.ontrack=e=>{if(id===callId&&remote){remote.srcObject=e.streams[0]||new MediaStream([e.track]);void remote.play().catch(()=>status("Tap the call screen to enable audio"));}};
+  pc.ontrack=e=>{if(id===callId&&remote){attachRemoteTrack(remoteStream,e);remote.srcObject=remoteStream;remote.muted=false;remote.volume=1;void remote.play().catch(()=>status("Tap the call screen to enable audio"));}};
   pc.onicecandidate=e=>{if(e.candidate&&id===callId)signal({type:"ice",payload:e.candidate.toJSON()})};
   pc.onconnectionstatechange=()=>{
    if(id!==callId)return;
    if(pc.connectionState==="connected"){if(!startedAt)startedAt=Date.now();if(timeout)clearTimeout(timeout);status(callDuration(Date.now()-startedAt));if(!timer)timer=setInterval(()=>status(callDuration(Date.now()-startedAt)),1000)}
-   else if(pc.connectionState==="failed"){close(true,"Connection failed")}
+   else if(pc.connectionState==="failed"){status("Media connection failed. TURN relay may be unavailable.");setTimeout(()=>{if(id===callId)close(true,"Connection failed")},1500)}
    else if(pc.connectionState==="disconnected")status("Reconnecting…");
   };
   return pc;

@@ -1,12 +1,12 @@
 "use client";
 import {createClient} from "../../lib/supabase/client";
 import {callDuration,startRingtone} from "./ringtone";
+import {attachRemoteTrack,getIceServers} from "./webrtc-config";
 import "./group-call.css";
 
 type Mode="audio"|"video";
 type Signal={type:"ring"|"join"|"reject"|"offer"|"answer"|"ice"|"leave";from:string;to?:string;workspaceId:string;channelId:string;callId:string;mode?:Mode;payload?:RTCSessionDescriptionInit|RTCIceCandidateInit;name?:string;groupName?:string};
 type Pending={callerId:string;mode:Mode;channelId:string;callId:string;groupName?:string};
-const iceServers:RTCIceServer[]=[{urls:"stun:stun.l.google.com:19302"},{urls:"stun:stun1.l.google.com:19302"}];
 
 export function attachGroupCallRuntime({workspaceId,channelId,meId}:{workspaceId:string;channelId:string;meId:string}){
  const client=createClient(),room=client.channel(`group-call:${workspaceId}`,{config:{private:true}}),peers=new Map<string,RTCPeerConnection>(),names=new Map<string,string>(),pendingIce=new Map<string,RTCIceCandidateInit[]>();
@@ -20,7 +20,7 @@ export function attachGroupCallRuntime({workspaceId,channelId,meId}:{workspaceId
  const media=async(next:Mode)=>{mode=next;stream=await navigator.mediaDevices.getUserMedia({audio:true,video:next==="video"});const local=tile(meId,myName,true);if(local){local.srcObject=stream;void local.play().catch(()=>{})}};
  const scheduleSoloEnd=()=>{if(soloTimer)clearTimeout(soloTimer);soloTimer=setTimeout(()=>{if(active&&connected&&peers.size===0)close(true)},900)};
  const removePeer=(id:string)=>{peers.delete(id);names.delete(id);pendingIce.delete(id);overlay?.querySelector(`[data-person="${CSS.escape(id)}"]`)?.remove();updateCount()};
- const peerFor=(id:string,name="Member")=>{const old=peers.get(id);if(old)return old;if(soloTimer){clearTimeout(soloTimer);soloTimer=null}names.set(id,name);const peer=new RTCPeerConnection({iceServers});peers.set(id,peer);stream?.getTracks().forEach(track=>peer.addTrack(track,stream!));peer.onicecandidate=event=>{if(event.candidate)void send({type:"ice",from:meId,to:id,payload:event.candidate.toJSON(),name:myName})};peer.ontrack=event=>{const remote=tile(id,names.get(id)||name);if(remote){remote.srcObject=event.streams[0]||new MediaStream([event.track]);void remote.play().catch(()=>{})}};peer.onconnectionstatechange=()=>{if(peer.connectionState==="connected"){connected=true;if(!startedAt)startedAt=Date.now();peakMembers=Math.max(peakMembers,peers.size+1);updateCount()}else if(["failed","closed","disconnected"].includes(peer.connectionState)){removePeer(id);scheduleSoloEnd()}};return peer};
+ const peerFor=(id:string,name="Member")=>{const old=peers.get(id);if(old)return old;if(soloTimer){clearTimeout(soloTimer);soloTimer=null}names.set(id,name);const peer=new RTCPeerConnection({iceServers:getIceServers()}),remoteStream=new MediaStream();peers.set(id,peer);stream?.getTracks().forEach(track=>peer.addTrack(track,stream!));peer.onicecandidate=event=>{if(event.candidate)void send({type:"ice",from:meId,to:id,payload:event.candidate.toJSON(),name:myName})};peer.ontrack=event=>{const remote=tile(id,names.get(id)||name);if(remote){attachRemoteTrack(remoteStream,event);remote.srcObject=remoteStream;remote.muted=false;remote.volume=1;void remote.play().catch(()=>{})}};peer.onconnectionstatechange=()=>{if(peer.connectionState==="connected"){connected=true;if(!startedAt)startedAt=Date.now();peakMembers=Math.max(peakMembers,peers.size+1);updateCount()}else if(["failed","closed","disconnected"].includes(peer.connectionState)){removePeer(id);scheduleSoloEnd()}};return peer};
  const offer=async(id:string,name:string)=>{const peer=peerFor(id,name),description=await peer.createOffer();await peer.setLocalDescription(description);await send({type:"offer",from:meId,to:id,mode,payload:description,name:myName})};
  const accept=async(_callerId:string)=>{try{stopRing?.();stopRing=null;ringingFrom="";show();await media(mode);active=true;await send({type:"join",from:meId,mode,name:myName})}catch{close(false);alert("Microphone or camera permission is required.")}};
  const start=async(next:Mode)=>{try{mode=next;callId=crypto.randomUUID();initiated=true;connected=false;peakMembers=1;summarySent=false;show();await media(next);active=true;await send({type:"ring",from:meId,mode:next,name:myName,groupName})}catch{close(false);alert("Microphone or camera permission is required.")}};
